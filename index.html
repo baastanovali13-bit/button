@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI-kit - Lesson 27</title>
+<style>
+  *{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+  body{background:#F6F7F9;padding:24px;color:#111}
+  h1{font-size:28px} h2{margin-top:32px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+  /* === BUTTON === */
+  .btn{border:0;cursor:pointer;border-radius:12px;padding:12px 20px;font-weight:600;transition:.2s}
+  .btn-primary{background:#0B7A43;color:#fff}
+  .btn-primary:hover{background:#095c32}
+  .btn-secondary{background:#E8ECEF;color:#111}
+  .btn-outline{background:#fff;border:2px solid #0B7A43;color:#0B7A43}
+  .btn-danger{background:#E53935;color:#fff}
+  .btn-sm{padding:8px 14px;font-size:13px}
+  .btn-lg{padding:16px 28px;font-size:17px}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+
+  /* === INPUT === */
+  .field{margin-bottom:12px}
+  .field label{display:block;font-weight:600;margin-bottom:6px;font-size:14px}
+  .input{width:100%;max-width:320px;padding:12px 14px;border:2px solid #D9DEE3;border-radius:12px;outline:none;background:#fff}
+  .input:focus{border-color:#0B7A43}
+  .input-error{border-color:#E53935}
+  .error{color:#E53935;font-size:13px}
+
+  /* === CARD === */
+  .card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.06);max-width:320px}
+  .card img{width:100%;border-radius:12px}
+  .card h3{margin:12px 0 6px}
+  .card p{color:#666;font-size:14px}
+
+  /* === MODAL === */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;padding:24px;border-radius:16px;width:90%;max-width:360px}
+  .badge{background:#E6F4EB;color:#0B7A43;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+
+<h1>UI-kit</h1>
+<p>Набор переиспользуемых компонентов</p>
+
+<h2>1. Button</h2>
+<div class="row">
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-secondary">Secondary</button>
+  <button class="btn btn-outline">Outline</button>
+  <button class="btn btn-danger">Danger</button>
+  <button class="btn btn-primary btn-sm">Small</button>
+  <button class="btn btn-primary btn-lg">Large</button>
+  <button class="btn btn-primary" disabled>Disabled</button>
+</div>
+
+<h2>2. Input</h2>
+<div class="field">
+  <label>Имя</label>
+  <input class="input" placeholder="Введите имя">
+</div>
+<div class="field">
+  <label>Email</label>
+  <input class="input input-error" placeholder="example@mail.com" value="ошибка@">
+  <div class="error">Неверный формат email</div>
+</div>
+
+<h2>3. Card</h2>
+<div class="card">
+  <span class="badge">IT • Next 3</span>
+  <h3>Lesson 27: Маршрутизация</h3>
+  <p>Создать набор переиспользуемых Button, Input, Card, Modal и других компонентов.</p>
+  <br>
+  <button class="btn btn-primary" onclick="openModal()">Подробнее</button>
+</div>
+
+<h2>4. Modal</h2>
+<button class="btn btn-outline" onclick="openModal()">Открыть Modal</button>
+
+<div class="modal" id="modal" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box">
+    <h3>Это Modal</h3>
+    <p>Переиспользуемый компонент для попапов, подтверждений и форм.</p>
+    <br>
+    <div class="row">
+      <button class="btn btn-primary" onclick="closeModal()">Понятно</button>
+      <button class="btn btn-secondary" onclick="closeModal()">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(){ document.getElementById('modal').classList.add('open') }
+  function closeModal(){ document.getElementById('modal').classList.remove('open') }
+</script>
+
+</body>
+</html>
